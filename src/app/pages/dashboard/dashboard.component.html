@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div>
+  <app-sidenav (onToggleSideNav)="onToggleSideNav($event)"></app-sidenav>
+  <app-body
+    [collapsed]="isSideNavCollapsed"
+    [screenWidth]="screenWidth"
+  ></app-body>
+</div>
+<!-- <app-body></app-body> -->
+<!-- <div class="sidebar">
+  <li>
+    <i class="bx bx-menu bx-lg" id="btn"></i>
+  </li>
+  <ul class="nav-list">
+    <li *ngFor="let item of sidebarItems; let i = index">
+      <a (click)="toggleSubMenu(item)">
+        <i [class]="item.icon"></i>
+        <span class="links_name">{{ item.label }}</span>
+        <i
+          class="bx"
+          *ngIf="item.children"
+          [ngClass]="item.expanded ? 'bx-chevron-down' : 'bx-chevron-right'"
+        >
+        </i>
+      </a>
+      <span class="tooltip">{{ item.label }}</span>
+      <ul *ngIf="item.expanded" class="inner">
+        <li *ngFor="let childItem of item.children">
+          <a [routerLink]="childItem.links">
+            <i [class]="childItem.icon"></i>
+            <span class="links_name">{{ childItem.label }}</span>
+          </a>
+          <span class="tooltip">{{ childItem.label }}</span>
+        </li>
+      </ul>
+    </li>
+  </ul>
+
+  <li class="profile">
+    <div class="profile-details">
+      <img src="assets/avatar.png" alt="profileImg" />
+      <div class="name_job">
+        <div class="name">Sarvech</div>
+        <div class="job">Angular Developer</div>
+      </div>
+    </div>
+    <a href="" (click)="logout()">
+      <i class="bx bx-log-out" id="log_out"></i>
+    </a>
+  </li>
+</div> -->
+
+<!-- main content -->
+<!-- <section class="home-section">
+  <router-outlet></router-outlet>
+</section> -->

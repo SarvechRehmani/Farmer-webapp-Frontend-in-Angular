@@ -1,0 +1,8 @@
+.tab {
+  height: 100%;
+}
+
+.container {
+  overflow: hidden !important;
+  margin: 20px;
+}

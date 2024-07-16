@@ -1,0 +1,44 @@
+.align-right {
+  text-align: right;
+}
+
+.card {
+  width: 20rem !important;
+  max-height: 12rem !important;
+  min-height: 5rem !important;
+  overflow: hidden;
+  position: relative;
+}
+.card-f {
+  position: absolute;
+  color: white;
+  background-color: #5b5b5b;
+  width: 20px;
+  height: 20px;
+  left: 90%;
+  top: 5%;
+  border-radius: 15px;
+  font-weight: bold;
+}
+.card .action {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  top: -500px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card:hover {
+  .card-img-top {
+    transform: scale(1.5);
+    transition: all 0.3s;
+    filter: blur(2px);
+  }
+  .action {
+    top: 0;
+    right: 0;
+    transition: linear;
+  }
+}

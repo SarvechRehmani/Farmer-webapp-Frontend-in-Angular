@@ -1,0 +1,122 @@
+<table class="table strip-table shadow" datatable [dtOptions]="dtOptions">
+  <thead>
+    <tr>
+      <th scope="col" class="th">#</th>
+      <th scope="col" class="th" *ngFor="let h of Head">{{ h.Head }}</th>
+      <th
+        scope="col"
+        class="th"
+        *ngIf="
+          userAction || roleActions || languagesActions || warehouseActions
+        "
+      >
+        ACTIONS
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of Body; let in = index">
+      <th class="th">{{ in + 1 }}</th>
+      <td *ngFor="let h of Head">
+        <span
+          [class]="
+            h.Field === 'status' ? (item[h.Field] ? 'active' : 'inActive') : ''
+          "
+        >
+          {{
+            h.Field === "status"
+              ? item[h.Field]
+                ? "Active"
+                : "Inactive"
+              : item[h.Field]
+          }}
+        </span>
+      </td>
+      <td *ngIf="userAction">
+        <div class="text-center">
+          <button mat-raised-button class="primary">
+            <!-- (click)="open(editRole, item)" -->
+            Edit Role
+          </button>
+        </div>
+      </td>
+      <td *ngIf="roleActions">
+        <button
+          title="Edit Role"
+          mat-icon-button
+          class="textPrimary"
+          (click)="emitingObject(item)"
+        >
+          <mat-icon>edit_note</mat-icon>
+        </button>
+
+        <button
+          title="Edit Permissions"
+          mat-icon-button
+          class="textWarning"
+          [routerLink]="'/dashboard/permissions/' + item.id"
+        >
+          <mat-icon>key</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="textDanger"
+          title="Delete Role"
+          (click)="emitingObjectForDelete(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+
+      <td *ngIf="languagesActions">
+        <button
+          title="Edit Language"
+          mat-icon-button
+          class="textPrimary"
+          (click)="emitingObject(item)"
+        >
+          <mat-icon>edit_note</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="textDanger"
+          title="Delete Language"
+          (click)="emitingObjectForDelete(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+
+      <td *ngIf="warehouseActions">
+        <button
+          title="Edit warehouse"
+          mat-icon-button
+          class="textPrimary"
+          (click)="emitingObject(item)"
+        >
+          <mat-icon>visibility</mat-icon>
+        </button>
+
+        <button
+          title="Edit Permissions"
+          mat-icon-button
+          class="textWarning"
+          [routerLink]="'/dashboard/warehouse/edit/' + item.id"
+        >
+          <mat-icon>edit_note</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          class="textDanger"
+          title="Delete Warehouse"
+          (click)="emitingObjectForDelete(item)"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

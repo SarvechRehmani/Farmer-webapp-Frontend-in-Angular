@@ -1,0 +1,134 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">
+                  {{ id ? "Edit Warehouse" : "Add Warehouse" }}
+                </h1>
+              </div>
+            </div>
+            <form [formGroup]="addWarehouseForm" (ngSubmit)="submit()">
+              <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                  <div style="text-align: left">
+                    <span
+                      style="color: red"
+                      *ngIf="name && name.touched && name.invalid"
+                      >Name is required</span
+                    >
+                  </div>
+                  <mat-form-field class="full-width">
+                    <mat-label>Warehouse Name</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      name="order"
+                      placeholder="Enter warehouse name here."
+                      formControlName="name"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div style="text-align: left">
+                    <span
+                      style="color: red"
+                      *ngIf="long && long.touched && long.invalid"
+                      >Location's Longitude is required</span
+                    >
+                  </div>
+                  <mat-form-field class="full-width">
+                    <mat-label>Location longitude</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      [(ngModel)]="warehouse.longitude"
+                      name="longitude"
+                      placeholder="Enter longitude here."
+                      formControlName="long"
+                      ngModel=" {{ display?.lng }}"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div style="text-align: left">
+                    <span
+                      style="color: red"
+                      *ngIf="lati && lati.touched && lati.invalid"
+                      >Location's Latitude is required</span
+                    >
+                  </div>
+                  <mat-form-field class="full-width">
+                    <mat-label>Location latitude</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      [(ngModel)]="warehouse.latitude"
+                      name="latitude"
+                      placeholder="Enter latitude here."
+                      formControlName="lati"
+                      ngModel=" {{ display?.lat }}"
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <google-map
+                    height="400px"
+                    width="670px"
+                    [center]="center"
+                    [zoom]="zoom"
+                    (mapClick)="moveMap($event)"
+                    (mapClick)="move($event)"
+                    (mapClick)="addMarker($event)"
+                  >
+                    <map-marker
+                      *ngFor="let markerPosition of markerPositions"
+                      [position]="markerPosition"
+                      [options]="markerOptions"
+                    ></map-marker>
+                  </google-map>
+
+                  <div>Latitude: {{ display?.lat }}</div>
+                  <div>Longitude: {{ display?.lng }}</div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <mat-card>
+                    <button
+                      type="submit"
+                      mat-raised-button
+                      class="primary"
+                      (click)="submit()"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                  </mat-card>
+
+                  <!-- <pre>
+                    {{ saveFile | json }}
+                  </pre> -->
+                </div>
+              </div>
+            </form>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

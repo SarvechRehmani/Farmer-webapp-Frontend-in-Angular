@@ -1,0 +1,19 @@
+[
+    {
+      "id": 1,
+      "name": "Sarvech",
+      "username": "saroo",
+      "password": "saroo123",
+      "role":"admin",
+      "status": true
+    },
+    {
+      "id": 2,
+      "name": "Hammad",
+      "username": "hammad",
+      "password": "hammad123",
+      "role":"user",
+      "status": true
+    }
+  ]
+  

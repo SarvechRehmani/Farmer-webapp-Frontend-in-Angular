@@ -1,0 +1,98 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">
+                  {{ jId ? "Edit Journey" : "Add Journey" }}
+                </h1>
+              </div>
+            </div>
+            <form action="">
+              <div class="row">
+                <div class="col-md-6 offset-md-3 text-center">
+                  <mat-form-field class="full-width">
+                    <mat-label>Choose Language</mat-label>
+                    <mat-select
+                      [(ngModel)]="saveFile.language"
+                      name="language"
+                      required
+                    >
+                      <mat-option value="en">English</mat-option>
+                      <mat-option value="ur">Urdu</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <mat-form-field class="full-width">
+                    <mat-label>Description</mat-label>
+                    <textarea
+                      matInput
+                      placeholder="Enter description here."
+                      name="description"
+                      required
+                      [(ngModel)]="saveFile.description"
+                    ></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <div class="file mb-4">
+                    <input
+                      class="form-control form-control-lg file-input"
+                      id="formFileLg"
+                      name="file"
+                      (change)="onFileSelected($event)"
+                      type="file"
+                      required
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <mat-form-field class="full-width">
+                    <mat-label>Journey Order</mat-label>
+                    <input
+                      matInput
+                      type="number"
+                      [(ngModel)]="saveFile.order"
+                      name="order"
+                      placeholder="Enter order of banner here."
+                      required
+                    />
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-md-6 offset-md-3">
+                  <mat-card>
+                    <button
+                      mat-raised-button
+                      class="primary"
+                      (click)="submit()"
+                      type="submit"
+                    >
+                      Save
+                    </button>
+                  </mat-card>
+
+                  <pre>
+                    {{ saveFile | json }}
+                  </pre>
+                </div>
+              </div>
+            </form>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

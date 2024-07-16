@@ -1,0 +1,145 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">Languages</h1>
+              </div>
+              <div class="col-md-4">
+                <div class="align-right">
+                  <button
+                    mat-raised-button
+                    class="primary mb-3"
+                    (click)="addLanguageOpen(addRole)"
+                  >
+                    ADD NEW LANGUAGE
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- === TABLE === -->
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <app-mytable
+                  [Head]="head"
+                  [Body]="languages"
+                  [languagesActions]="true"
+                  (update)="editLanguageOpen(editLanguage, $event)"
+                  (delete)="deleteLangauge($event)"
+                ></app-mytable>
+              </div>
+            </div>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR ADD LANGUAGE-->
+<ng-template #addRole let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Add Language</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <mat-form-field class="full-width">
+          <mat-label>Language</mat-label>
+          <input
+            matInput
+            [(ngModel)]="newLanguage.lName"
+            name="language"
+            placeholder="Enter language here."
+            required
+          />
+        </mat-form-field>
+
+        <mat-checkbox
+          color="primary"
+          name="isAcive"
+          [(ngModel)]="newLanguage.isActive"
+          >Active</mat-checkbox
+        >
+        {{ newLanguage | json }}
+
+        <div class="modal-footer">
+          <button
+            mat-raised-button
+            class="primary"
+            (click)="modal.close('save')"
+          >
+            Save
+          </button>
+          <button
+            mat-raised-button
+            class="secondary"
+            (click)="modal.close('close')"
+          >
+            Close
+          </button>
+        </div>
+      </form>
+    </div>
+  </mat-card>
+</ng-template>
+
+<!-- EDIT LANGUAGE MODAL -->
+<ng-template #editLanguage let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Edit Language</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <form class="example-form">
+        <mat-form-field class="full-width">
+          <mat-label>Language</mat-label>
+          <input
+            matInput
+            [(ngModel)]="eLanguage.lName"
+            name="name"
+            placeholder="Enter language here."
+            required
+          />
+        </mat-form-field>
+
+        <mat-checkbox
+          color="primary"
+          name="isAcive"
+          [(ngModel)]="eLanguage.status"
+          >Active</mat-checkbox
+        >
+        {{ eLanguage | json }}
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button class="primary" (click)="modal.close('save')">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        class="secondary"
+        (click)="modal.close('close')"
+      >
+        Close
+      </button>
+    </div>
+  </mat-card>
+</ng-template>

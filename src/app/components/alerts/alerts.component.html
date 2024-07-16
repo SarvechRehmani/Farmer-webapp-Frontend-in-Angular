@@ -1,0 +1,68 @@
+<div class="bootstrap">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <mat-card class="text-center mt-4 p-4">
+          <div class="alerts text-center">
+            <h1>Alert Boxes</h1>
+            <button class="btn btn-success m-1" (click)="successAlert()">
+              Success Alert
+            </button>
+            <button class="btn btn-danger m-1" (click)="dangerAlert()">
+              Danger Alert
+            </button>
+            <button class="btn btn-warning m-1" (click)="warningAlert()">
+              Warning Alert
+            </button>
+            <button class="btn btn-info" (click)="infoAlert()">
+              Info Alert
+            </button>
+          </div>
+          <div class="snacks text-center mt-3">
+            <h1>SnackBars</h1>
+            <button class="btn btn-success m-1" (click)="successSnack()">
+              Success Snack
+            </button>
+            <button class="btn btn-danger m-1" (click)="dangerSnack()">
+              Danger Snack
+            </button>
+            <button class="btn btn-warning m-1" (click)="warningSnack()">
+              Warning Snack
+            </button>
+            <button class="btn btn-info" (click)="infoSnack()">
+              Info Snack
+            </button>
+          </div>
+
+          <div class="buttons mt-3">
+            <h1>Buttons</h1>
+            <div class="mb-3">
+              <button class="m-1" mat-button>Default</button>
+              <button class="m-1 primary" mat-button>Primary</button>
+              <button class="m-1 danger" mat-button>Danger</button>
+              <button class="m-1 warning" mat-button>Warning</button>
+              <button class="m-1 secondary" mat-button>Secondary</button>
+            </div>
+            <div class="mb-3">
+              <button class="m-1" mat-raised-button>Default</button>
+              <button class="m-1 primary" mat-raised-button>Primary</button>
+              <button class="m-1 danger" mat-raised-button>Danger</button>
+              <button class="m-1 warning" mat-raised-button>Warning</button>
+              <button class="m-1 secondary" mat-raised-button>Secondary</button>
+            </div>
+
+            <div>
+              <button class="m-1" mat-stroked-button>Default</button>
+              <button class="m-1 primarys" mat-stroked-button>Primary</button>
+              <button class="m-1 dangers" mat-stroked-button>Danger</button>
+              <button class="m-1 warnings" mat-stroked-button>Warning</button>
+              <button class="m-1 secondarys" mat-stroked-button>
+                Secondary
+              </button>
+            </div>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

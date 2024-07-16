@@ -1,0 +1,137 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">Roles & Permissions</h1>
+              </div>
+              <div class="col-md-4">
+                <div class="align-right">
+                  <button
+                    mat-flat-button
+                    class="primary mb-3"
+                    (click)="addRoleOpen(addRole)"
+                  >
+                    Add role
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- === TABLE === -->
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <app-mytable
+                  [Head]="head"
+                  [Body]="roles"
+                  [roleActions]="true"
+                  (update)="editRoleOpen(editRole, $event)"
+                  (delete)="deleteRole($event)"
+                ></app-mytable>
+              </div>
+            </div>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR ADD ROLE-->
+<ng-template #addRole let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Add New Role</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="example-form">
+        <mat-form-field class="full-width">
+          <mat-label>Role Name</mat-label>
+          <input
+            matInput
+            [(ngModel)]="newRole.roleName"
+            name="name"
+            placeholder="Enter role name here."
+            required
+          />
+        </mat-form-field>
+
+        <mat-checkbox
+          color="primary"
+          name="isAcive"
+          [(ngModel)]="newRole.isActive"
+          >Active</mat-checkbox
+        >
+        {{ newRole | json }}
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button class="primary" (click)="modal.close('save')">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        class="secondary"
+        (click)="modal.close('close')"
+      >
+        Close
+      </button>
+    </div>
+  </mat-card>
+</ng-template>
+
+<!-- EDIT ROLE MODAL -->
+<ng-template #editRole let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Edit Role</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <form class="example-form">
+        <mat-form-field class="full-width">
+          <mat-label>Role Name</mat-label>
+          <input
+            matInput
+            [(ngModel)]="eRole.roleName"
+            name="name"
+            placeholder="Enter role name here."
+            required
+          />
+        </mat-form-field>
+
+        <mat-checkbox color="primary" name="isAcive" [(ngModel)]="eRole.status"
+          >Active</mat-checkbox
+        >
+        {{ eRole | json }}
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button class="primary" (click)="modal.close('save')">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        class="secondary"
+        (click)="modal.close('close')"
+      >
+        Close
+      </button>
+    </div>
+  </mat-card>
+</ng-template>

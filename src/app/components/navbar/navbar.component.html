@@ -1,0 +1,23 @@
+<mat-toolbar color="black">
+  <span class="spacer"></span>
+
+  <button mat-icon-button>
+    <mat-icon matBadge="5" matBadgeColor="warn" aria-hidden="false"
+      >notifications</mat-icon
+    >
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <div class="profile-details">
+      <img src="assets/avatar.png" alt="profileImg" />
+    </div>
+  </button>
+
+  <button mat-flat-button (click)="logout()">
+    <i class="fas fa-sign-out-alt"></i>
+    LOGOUT
+  </button>
+</mat-toolbar>

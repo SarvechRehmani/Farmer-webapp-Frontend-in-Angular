@@ -1,0 +1,140 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">Warehouses</h1>
+              </div>
+              <div class="col-md-4">
+                <div class="align-right">
+                  <button
+                    mat-raised-button
+                    class="primary mb-3"
+                    routerLink="/dashboard/warehouse/add"
+                  >
+                    ADD NEW WAREHOUSE
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- === TABLE === -->
+            <div class="row mt-4">
+              <div class="col-md-12">
+                <app-mytable
+                  [Head]="head"
+                  [Body]="warehouse"
+                  [warehouseActions]="true"
+                  (update)="viewWarehouseOpen(viewWH, $event)"
+                  (delete)="deleteWarehouse($event)"
+                ></app-mytable>
+              </div>
+            </div>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FOR ADD WAREHOUSE-->
+<ng-template #addWarehouse let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Add New Role</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+    <div class="modal-body">
+      <form class="example-form">
+        <mat-form-field class="full-width">
+          <mat-label>Role Name</mat-label>
+          <input
+            matInput
+            [(ngModel)]="newWarehouse.warehouse"
+            name="name"
+            placeholder="Enter role name here."
+            required
+          />
+        </mat-form-field>
+
+        <mat-checkbox
+          color="primary"
+          name="isAcive"
+          [(ngModel)]="newWarehouse.isActive"
+          >Active</mat-checkbox
+        >
+        {{ newWarehouse | json }}
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button mat-raised-button class="primary" (click)="modal.close('save')">
+        Save
+      </button>
+      <button
+        mat-raised-button
+        class="secondary"
+        (click)="modal.close('close')"
+      >
+        Close
+      </button>
+    </div>
+  </mat-card>
+</ng-template>
+
+<!-- VIEW WAREHOUSE MODAL -->
+<ng-template #viewWH let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>View Warehouse</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <!-- VIEW WAREHOUSE MODAL -->
+
+      <google-map
+        height="400px"
+        width="465px"
+        [center]="center"
+        [zoom]="zoom"
+        (mapClick)="moveMap($event)"
+        (mapClick)="move($event)"
+        (mapClick)="addMarker($event)"
+      >
+        <map-marker
+          *ngFor="let markerPosition of markerPositions"
+          [position]="markerPosition"
+          [options]="markerOptions"
+        ></map-marker>
+      </google-map>
+
+      <div>Latitude: {{ display?.lat }}</div>
+      <div>Longitude: {{ display?.lng }}</div>
+
+      {{ vwarehouse | json }}
+
+      <div class="modal-footer">
+        <button
+          mat-raised-button
+          class="secondary"
+          (click)="modal.close('close')"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </mat-card>
+</ng-template>

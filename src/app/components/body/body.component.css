@@ -1,0 +1,28 @@
+.body {
+  width: calc(100% - 5rem);
+  height: 10vh;
+  margin-left: 5rem;
+  z-index: 0;
+  position: relative;
+  top: 0;
+  transition: all 0.5s ease;
+  /* padding: 1rem; */
+}
+
+.body-trimmed {
+  width: calc(100% - 16.5625rem);
+  margin-left: 16.5625rem;
+}
+
+.body-md-screen {
+  width: calc(100% - 5rem);
+  margin-left: 5rem;
+}
+
+/* CSS for screens smaller than 600 pixels */
+@media only screen and (max-width: 600px) {
+  .body {
+    width: 100% !important;
+    margin-left: 0px;
+  }
+}

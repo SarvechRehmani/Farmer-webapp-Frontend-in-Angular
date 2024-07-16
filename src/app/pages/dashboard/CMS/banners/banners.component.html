@@ -1,0 +1,85 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <mat-card class="mt-4 p-4">
+          <main>
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="pageHeading py-3 mb-2">Banners</h1>
+              </div>
+              <div class="col-md-4">
+                <div class="align-right">
+                  <button
+                    mat-raised-button
+                    class="primary mb-3"
+                    routerLink="/dashboard/banner/add"
+                  >
+                    ADD NEW BANNER
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div
+                class="col-md-12"
+                style="
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  flex-wrap: wrap;
+                "
+              >
+                <div class="card m-4" *ngFor="let b of banners">
+                  <img [src]="b.banner" class="card-img-top" alt="" />
+                  <div class="card-body">
+                    <div class="action text-center">
+                      <a
+                        (click)="editRoleOpen(viewBanner, b)"
+                        class="btn btn-primary mx-1"
+                      >
+                        <i class="bx bx-show"></i>
+                      </a>
+                      <a
+                        href="#"
+                        [routerLink]="'/dashboard/banner/edit/' + b.bId"
+                        class="btn btn-warning mx-1"
+                      >
+                        <i class="bx bx-edit"></i
+                      ></a>
+                      <a (click)="deleteBanner()" class="btn btn-danger mx-1">
+                        <i class="bx bx-trash"></i
+                      ></a>
+                    </div>
+                  </div>
+                  <div class="text-center card-f">
+                    <p>{{ b.order }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </main>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- VIEW BANNER MODAL -->
+<ng-template #viewBanner let-modal>
+  <mat-card>
+    <div class="modal-header">
+      <h2>Banner</h2>
+      <button
+        aria-label="Close"
+        class="btn-close"
+        color="primary"
+        (click)="modal.dismiss('cross')"
+      ></button>
+    </div>
+
+    <div class="modal-body">
+      <img [src]="banner.banner" class="img-fluid" alt="..." />
+    </div>
+  </mat-card>
+</ng-template>
